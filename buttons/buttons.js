@@ -90,7 +90,7 @@ function onPrevPage () {
   }
   pagesBtn.textContent = '';
   pagesBtn.append(btnFirst, btnPrev);
-  for(let i = id; i <= id+4; i++) {
+  for(let i = id; i <= id-4; i++) {
    const pagItem = document.createElement('div');
    pagItem.classList.add('pages__item');
    pagItem.setAttribute('id', i);

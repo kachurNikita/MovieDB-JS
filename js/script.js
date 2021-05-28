@@ -5,7 +5,7 @@
  const DEFAULTAPIPAGE = API_ADRESS + page;
  let newData;
  let changeByForEach;
- let changeSomething
+ let changeSomething;
  let hideElementsArr = [];
  const movies = document.querySelector('.movies');
 
@@ -16,7 +16,6 @@
  function createMovies(someData) {
       movies.innerHTML = '';
      changeByForEach = newData.results.forEach(movie => {
-
          createPosters(movie)
      })
  }

@@ -6,9 +6,17 @@ const localStorageSection = document.getElementById('localstorage');
 const favoriteArr = [];
 let parseMoviesFrom;
 
-
-
-
+function addToFav (movieObj) {
+    const oneMov = newData.results.find((item) => {
+        return item.id === +movieObj
+    } )
+        favoriteArr.push(oneMov)
+        localStorage.setItem('res', JSON.stringify(favoriteArr))
+    // if (movieObj.id === bId) {
+    //
+    //
+    // }
+}
 
  // {
 //     localStorageSection.innerHTML = '';

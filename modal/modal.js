@@ -26,9 +26,7 @@ function modalSwitcher () {
     }
 }
 
- function nextMovies() {
      nextMovie.addEventListener('click', () => {
-         removeEventListener('click',movies);
          const doStep = document.querySelector('.slider__next').getAttribute('step');
           newData.results.forEach((item, index)=>{
               if(index === +doStep) {
@@ -36,7 +34,7 @@ function modalSwitcher () {
               }
           })
      })
- }
+
 
 buttonBack.addEventListener('click', () => {
     if( global.style.display == 'block') {
@@ -93,13 +91,42 @@ function createModal (data, index, adIndex) {
     description.append(descText);
     slider.append(nextMovie);
     description.prepend(favoriteBtn);
-    nextMovies();
-    favoriteBtn.addEventListener('click', (e) => {
-        console.log(e.target)
-    })
+
 }
 
+const deleteMov = (movieId)=> {
+    const fromLocal = localStorage.getItem('res');
+    const lastresult = JSON.parse(fromLocal)
+    lastresult.splice(movieId, 1)
+    localStorage.setItem('res', JSON.stringify(lastresult))
+ }
 
+
+ favoriteBtn.addEventListener('click', (e) => {
+     if (favoriteBtn.classList.contains('description__favorite')) {
+         favoriteBtn.textContent = 'Unfavorite'
+     } else {
+         favoriteBtn.textContent = 'add to Favorite'
+     }
+     const blaBlaId = favoriteBtn.getAttribute('movieid')
+     const getLocalStorage =  JSON.parse(localStorage.getItem('res'));
+     if (getLocalStorage === null) {
+         addToFav(blaBlaId)
+         return
+     }
+     const oneMovieObj = (getLocalStorage).findIndex((entry) => entry.id === +blaBlaId)
+     if (oneMovieObj === (-1)) {
+             addToFav(oneMovieObj, +blaBlaId, newData.results);
+             return
+     }
+     deleteMov(getLocalStorage)
+
+ // )
+     // if (getLocalStorage === null) {
+     //     favoriteArr.push(newData.results)
+     // }
+
+ })
 
 
 
