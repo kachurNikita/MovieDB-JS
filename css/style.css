@@ -1,0 +1,117 @@
+@import url('./movies.css');
+@import url('modal.css');
+@import url('../localstorage/localstorage.css');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "American Typewriter";
+}
+
+ul {
+    list-style: none;
+}
+
+/** Header Section **/
+.header {
+    background-color: #778899;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logotype {
+    display: flex;
+    align-items: center;
+}
+
+.logotype:hover {
+    cursor: pointer;
+}
+
+.logotype__text {
+    margin-left: 10px;
+    font-weight: 900;
+}
+
+.account {
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    padding:  10px 25px;
+    justify-content: space-between;
+}
+
+.account:hover, .account__btn{
+    cursor: pointer;
+}
+
+.account__btn{
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+}
+
+/** Films Section **/
+
+.films {
+    padding: 50px 0;
+    color: #a9a9a9;
+}
+
+.main-title {
+    margin-bottom: 10px;
+}
+
+.movies__text {
+    position: absolute;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.movies__block:hover .movies__text {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.pages {
+    display: flex;
+   width: 430px;
+    border: 1px solid  #a9a9a9;
+    color: #a9a9a9;
+    margin: 0 auto;
+}
+
+.pages__item {
+    border-right: 1px solid #a9a9a9;
+    padding: 10px;
+}
+
+.pages__item:last-child {
+    border-right: 0px;
+}
+
+.pages__item:hover {
+  color: #00ff7f;
+}
+
+
+
+

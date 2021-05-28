@@ -1,0 +1,37 @@
+.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.movie{
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.moviePicture {
+    width: 250px;
+    height: 350px;
+    -webkit-box-shadow: 0px 0px 19px 7px rgba(34, 60, 80, 0.23);
+    -moz-box-shadow: 0px 0px 19px 7px rgba(34, 60, 80, 0.23);
+    box-shadow: 0px 0px 19px 7px rgba(34, 60, 80, 0.23);
+
+    color: red;
+}
+
+.movieTitle {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 156px;
+    color: antiquewhite;
+    font-weight: 900;
+    font-size: 30px;
+    display: none;
+}
+
+.block:hover .movies__title {
+    display: block;
+    color: blue;
+}
