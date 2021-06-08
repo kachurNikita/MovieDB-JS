@@ -22,6 +22,7 @@
  btnLast.classList.add('pages__item');
 
 // First page
+
 function onFirstPage() {
  page = 1;
  const URL = API_ADRESS + page;
@@ -101,7 +102,7 @@ function onPrevPage () {
     pagesBtn.append(btnNext, btnLast);
    }
   }
- }
+ };
 
  function getPagination (pagItem) {
   pagItem.addEventListener('click', (e) => {
@@ -113,6 +114,6 @@ function onPrevPage () {
     createButtons(+id, newData)
    });
   })
- }
+ };
  
 

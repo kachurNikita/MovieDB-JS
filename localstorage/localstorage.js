@@ -6,17 +6,48 @@ const localStorageSection = document.getElementById('localstorage');
 const favoriteArr = [];
 let parseMoviesFrom;
 
-function addToFav (movieObj) {
-    const oneMov = newData.results.find((item) => {
-        return item.id === +movieObj
-    } )
-        favoriteArr.push(oneMov)
-        localStorage.setItem('res', JSON.stringify(favoriteArr))
-    // if (movieObj.id === bId) {
-    //
-    //
-    // }
-}
+function addToFav(oneMovieid) {
+    const oneMov = newData.results.find(movieAt => +movieAt.id === +oneMovieid);
+   const addToWhatWeHave =  favoriteArr.push(oneMov)
+    const toLocalStorage = localStorage.setItem('pushingMovie',JSON.stringify(favoriteArr))
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// function addToFav (movieObj) {
+//     const oneMov = newData.results.find((item) => {
+//         return item.id === +movieObj
+//     } )
+//         favoriteArr.push(oneMov)
+//         localStorage.setItem('res', JSON.stringify(favoriteArr))
+//     // if (movieObj.id === bId) {
+//     //
+//     //
+//     // }
+// }
 
  // {
 //     localStorageSection.innerHTML = '';
