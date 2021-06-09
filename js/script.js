@@ -11,14 +11,14 @@
 
  function getData(url) {
      return fetch(url)
- }
+ };
 
  function createMovies(someData) {
       movies.innerHTML = '';
      changeByForEach = newData.results.forEach(movie => {
          createPosters(movie)
      })
- }
+ };
 
  function createPosters(someData) {
      const {poster_path, id, title} = someData;

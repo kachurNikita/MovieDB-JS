@@ -62,7 +62,7 @@ function createModal (data, index, adIndex) {
     const posterURL = 'http://image.tmdb.org/t/p/w342' + poster_path;
     favoriteBtn.setAttribute('movieId', id);
     if (localStorage.getItem('pushingMovie')) {
-              let mov= JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
+              let mov = JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
                    elementMov.id === id)
                 if (mov) {
                     favoriteBtn.style.display = 'none'
