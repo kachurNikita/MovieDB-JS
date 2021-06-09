@@ -64,7 +64,7 @@ function onPrevPage () {
    createButtons(page, newData)
    createMovies(newData);
   })
- }
+ };
 
  //Last page
 
@@ -77,7 +77,7 @@ function onPrevPage () {
   createButtons(page-4, newData)
   createMovies(newData);
   });
- }
+ };
 
  btnNext.addEventListener('click', onNextPage);
  btnFirst.addEventListener('click', onFirstPage);

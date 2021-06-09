@@ -24,7 +24,7 @@ function modalSwitcher () {
         films.style.display = 'none';
         global.style.display = 'block';
     }
-}
+};
 
      nextMovie.addEventListener('click', () => {
          const doStep = document.querySelector('.slider__next').getAttribute('step');
@@ -33,20 +33,20 @@ function modalSwitcher () {
                   createModal(item, ++index, index)
               }
           })
-     })
+     });
 
 buttonBack.addEventListener('click', () => {
     if( global.style.display == 'block') {
         global.style.display = 'none';
         films.style.display = 'block';
     }
-})
+});
 
 movies.addEventListener('click', (e) => {
     const {target:{dataset:{id}}} = e;
     const newId = id;
     getDataAndId(newData.results, newId);
-})
+});
 
  function getDataAndId(data, someId) {
     let singleArr = data.forEach((item, index) => {
@@ -55,7 +55,7 @@ movies.addEventListener('click', (e) => {
 
         }
     })
- }
+ };
 
 function createModal (data, index, adIndex) {
     const {poster_path, id, title, vote_average, release_date, overview} = data;
@@ -102,7 +102,7 @@ function createModal (data, index, adIndex) {
     description.append(descText);
     slider.append(nextMovie);
     description.prepend(favoriteBtn);
-}
+};
 
  favoriteBtn.addEventListener('click', (e) => {
      const idFromAttribute = +favoriteBtn.getAttribute('movieId');
@@ -119,4 +119,4 @@ function createModal (data, index, adIndex) {
      } else{
          favoriteBtn.style.display = 'block'
      }
- })
+ });

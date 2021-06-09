@@ -7,6 +7,7 @@ const favoriteArr = [];
 let parseMoviesFrom;
 const parent = document.createElement('div');
 const localContainer = document.getElementById('localContainer');
+let storageArray = [];
 
 myAccount.addEventListener('click', (e) => {
     parent.textContent = ''
@@ -14,9 +15,12 @@ myAccount.addEventListener('click', (e) => {
         global.style.display = 'none'
         films.style.display = 'none'
         localStorageSection.style.display ='block'
-    }
+    } if (localStorage.getItem('pushingMovie') === null) {
+      alert('There is no movie yet, please add a movie')
+    } else {
         const getFrom = JSON.parse(localStorage.getItem('pushingMovie'))
         createFavoritepage(getFrom)
+    }
 });
 
 const earthlogotype = function () {
@@ -68,19 +72,25 @@ function create(data){
     posterBlock.append(poster)
     someBlock.append( unFavButton, overview)
     localContainer.append(parent)
+    changeToArray()
 };
 
-const globalUnFavButton = document.getElementsByClassName('.desUn')
-// globalUnFavButton.forEach(item => {
-//     console.log(globalUnFavButton)
-//     item.addEventListener('click', workPlease)
-// })
-console.log(globalUnFavButton)
+function changeToArray () {
+    const fvbtn = document.getElementsByClassName('desUn')
+    const toArr = Array.from(fvbtn)
+    toArr.forEach(item => {
+       const takeId =  item.getAttribute('UnId')
+       item.addEventListener('click', workPlease(takeId))
+    })
+}
 
-function workPlease () {
-    // addEventListener('click', (e)=> {
+function workPlease (id) {
         const someFromLocalStorage = JSON.parse(localStorage.getItem('pushingMovie'))
-        console.log(someFromLocalStorage)
-        const getFinallyThisFuckingId = +globalUnFavButton.getAttribute('UnId')
-     // })
+        const storageArray =  someFromLocalStorage.filter((item, index, arr) => {
+            return item.id !== id
+       })
+}
+
+function deleteOneMov(someItem) {
+   storageArray = someItem
 }
