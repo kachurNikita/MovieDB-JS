@@ -31,7 +31,7 @@ function onFirstPage() {
   createButtons(page, newData)
   createMovies(newData);
  })
-}
+};
 
  // Prev page
 
@@ -47,7 +47,7 @@ function onPrevPage () {
    createButtons(page, newData)
    createMovies(newData);
   })
-}
+};
 
  // Next page
 
@@ -68,7 +68,7 @@ function onPrevPage () {
 
  //Last page
 
-  function  onLastPage () {
+  function onLastPage () {
   const{total_pages} = newData;
   page = total_pages;
   const totalPages = API_ADRESS + page;
@@ -91,7 +91,7 @@ function onPrevPage () {
   }
   pagesBtn.textContent = '';
   pagesBtn.append(btnFirst, btnPrev);
-  for(let i = id; i <= id-4; i++) {
+  for(let i = id; i <= id+4; i++) {
    const pagItem = document.createElement('div');
    pagItem.classList.add('pages__item');
    pagItem.setAttribute('id', i);

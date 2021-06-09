@@ -52,6 +52,7 @@ movies.addEventListener('click', (e) => {
     let singleArr = data.forEach((item, index) => {
         if(item.id === +someId) {
           createModal(item,++index, index);
+
         }
     })
  }
@@ -60,6 +61,17 @@ function createModal (data, index, adIndex) {
     const {poster_path, id, title, vote_average, release_date, overview} = data;
     const posterURL = 'http://image.tmdb.org/t/p/w342' + poster_path;
     favoriteBtn.setAttribute('movieId', id);
+    if (localStorage.getItem('pushingMovie')) {
+              let mov= JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
+                   elementMov.id === id)
+                if (mov) {
+                    favoriteBtn.style.display = 'none'
+                } else {
+                    favoriteBtn.style.display = 'block'
+                }
+    } else{
+        favoriteBtn.style.display = 'block'
+    }
     nextMovie.setAttribute('step', index);
     nextMovie.classList.add('slider__next');
     descText.classList.add('description__text');
@@ -83,7 +95,6 @@ function createModal (data, index, adIndex) {
         cinemaPicture.setAttribute('src', './img/stranger.png');
         background.setAttribute('src', './img/stranger.png');
     }
-
     about.prepend(cinema);
     modalWindow.append(background);
     descList.append(score, releaseDate);
@@ -93,59 +104,19 @@ function createModal (data, index, adIndex) {
     description.prepend(favoriteBtn);
 }
 
-
- function ifWeHaveMovie(id) {
-     const getLocalStorage =  JSON.parse(localStorage.getItem('pushingMovie'));
-     getLocalStorage.find(item => {
-        if (item.id === null) {
-            favoriteBtn.style.display = 'block'
-        } else  if (item.id === id) {
-            favoriteBtn.style.display = 'none'
-        } else  if (item.id !== id) {
-            favoriteBtn.style.display = 'block'
-        }
-     })
- }
-
  favoriteBtn.addEventListener('click', (e) => {
      const idFromAttribute = +favoriteBtn.getAttribute('movieId');
-     addToFav(idFromAttribute)
-     ifWeHaveMovie(idFromAttribute)
+     addToFav(idFromAttribute);
+
+     if (localStorage.getItem('pushingMovie')) {
+         let mov= JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
+             elementMov.id === idFromAttribute)
+         if (mov) {
+             favoriteBtn.style.display = 'none'
+         } else {
+             favoriteBtn.style.display = 'block'
+         }
+     } else{
+         favoriteBtn.style.display = 'block'
+     }
  })
-
-
- //
- // favoriteBtn.addEventListener('click', (e) => {
- //     if (favoriteBtn.classList.contains('description__favorite')) {
- //         favoriteBtn.textContent = 'Unfavorite'
- //     } else {
- //         favoriteBtn.textContent = 'add to Favorite'
- //     }
- //     const idFromAttribute = +favoriteBtn.getAttribute('movieid');
- //
- //     const getLocalStorage =  JSON.parse(localStorage.getItem('res'));
- //     if (getLocalStorage === null) {
- //         addToFav(idFromAttribute)
- //         return
- //     }
- //     const oneMovieObj = (getLocalStorage).findIndex((entry) => entry.id === idFromAttribute)
- //     if (oneMovieObj === (-1)) {
- //             addToFav(oneMovieObj, idFromAttribute, newData.results);
- //             return
- //     }
- //     deleteMov(getLocalStorage)
- // })
-
-
-
-
-
-
- // if (getLocalStorage === null) {
- //
- // } else if (getLocalStorage.find(item =>
- //     item.id === id)) {
- //     favoriteBtn.style.display = 'none'
- // } else if (getLocalStorage.find(item => item.id !== id) ) {
- //     favoriteBtn.style.display = 'block'
- // }

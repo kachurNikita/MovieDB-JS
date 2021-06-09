@@ -42,8 +42,6 @@
      movies.appendChild(movieBlock);
  }
 
- /* first function */
-
  getData(DEFAULTAPIPAGE).then(resp => resp.json()).then(data => {
      newData = data;
      createMovies(newData)
