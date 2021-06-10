@@ -24,13 +24,13 @@ const earthLogotype = function () {
 logotype.addEventListener('click', earthLogotype);
 
 function doThisManyTimes() {
-    if (global.style.display === 'block' || films.style.display === 'block') {
+    if (localStorageSection.style.display !== 'block') {
         global.style.display = 'none';
         films.style.display = 'none';
         localStorageSection.style.display = 'block'
     }
         parent.textContent = '';
-    if (localStorage.getItem('pushingMovie') === null || localStorage.pushingMovie.length === 0 ) {
+    if (localStorage.getItem('pushingMovie') === null || localStorage.pushingMovie.length === [] ) {
         document.getElementById('localContainer').textContent = 'There is no movies yet'
     } else {
         document.getElementById('localContainer').textContent = '';
