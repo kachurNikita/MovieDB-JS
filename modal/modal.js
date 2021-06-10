@@ -106,17 +106,13 @@ function createModal (data, index, adIndex) {
 
  favoriteBtn.addEventListener('click', (e) => {
      const idFromAttribute = +favoriteBtn.getAttribute('movieId');
-     addToFav(idFromAttribute);
+
 
      if (localStorage.getItem('pushingMovie')) {
-         let mov= JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
-             elementMov.id === idFromAttribute)
-         if (mov) {
+         if (JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
+             elementMov.id === idFromAttribute)) {
              favoriteBtn.style.display = 'none'
-         } else {
-             favoriteBtn.style.display = 'block'
          }
-     } else{
-         favoriteBtn.style.display = 'block'
      }
+             addToFav(idFromAttribute);
  });

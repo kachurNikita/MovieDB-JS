@@ -3,17 +3,17 @@
 const logotype = document.getElementById('logotype');
 const myAccount = document.getElementById('account');
 const localStorageSection = document.getElementById('localstorage');
-const favoriteArr = [];
+
 let parseMoviesFrom;
 const parent = document.createElement('div');
-const localContainer = document.getElementById('localContainer');
+let localContainer = document.getElementById('localContainer');
 
 myAccount.addEventListener('click', (e) => {
     parent.textContent = '';
     doThisManyTimes()
 });
 
-const earthlogotype = function () {
+const earthLogotype = function () {
     if ( global.style.display === 'block' || films.style.display === 'none' ) {
         global.style.display = 'none';
         films.style.display = 'block';
@@ -21,27 +21,34 @@ const earthlogotype = function () {
     }
 };
 
-logotype.addEventListener('click', earthlogotype);
-
+logotype.addEventListener('click', earthLogotype);
 
 function doThisManyTimes() {
     if (global.style.display === 'block' || films.style.display === 'block') {
         global.style.display = 'none';
         films.style.display = 'none';
-        localStorageSection.style.display ='block'
-    } if (localStorage.getItem('pushingMovie') === null || localStorage.pushingMovie.length === 0 ) {
+        localStorageSection.style.display = 'block'
+    }
+        parent.textContent = '';
+    if (localStorage.getItem('pushingMovie') === null || localStorage.pushingMovie.length === 0 ) {
         document.getElementById('localContainer').textContent = 'There is no movies yet'
-
     } else {
         document.getElementById('localContainer').textContent = '';
         const getFrom = JSON.parse(localStorage.getItem('pushingMovie'))
         createFavoritepage(getFrom)
     }
-}
+};
+
 function addToFav(oneMovieid) {
     const oneMov = newData.results.find(movieAt => +movieAt.id === +oneMovieid);
-    const addToWhatWeHave =  favoriteArr.push(oneMov);
-    const toLocalStorage = localStorage.setItem('pushingMovie',JSON.stringify(favoriteArr))
+    let favoriteArr = [];
+
+    if (localStorage.getItem('pushingMovie')){
+     favoriteArr = JSON.parse(localStorage.getItem('pushingMovie'))
+    }
+    favoriteArr.push(oneMov)
+    localStorage.setItem('pushingMovie',JSON.stringify(favoriteArr))
+    favoriteBtn.style.display = 'none'
 }
 
 function createFavoritepage (someData) {
@@ -50,6 +57,7 @@ function createFavoritepage (someData) {
     });
     // вызов функции где мы "ищем" кнопку Unfavorite происходит после того как я построил весь список и создал все кнопки и все блоки
     someBodyOnceToldMe();
+
 }
 
 function create(data){
@@ -70,7 +78,7 @@ function create(data){
     unFavButton.textContent = 'Unfavorite';
     unFavButton.classList.add('desUn');
     // нет атрибута UnId - бывает data-id, id и типа того.
-    unFavButton.setAttribute('id', id);
+    unFavButton.setAttribute('id', id + 10);
     posterBlock.classList.add('cinema');
     favOverview.classList.add('description__text');
     favOverview.textContent = overview;
@@ -90,16 +98,18 @@ function someBodyOnceToldMe() {
         // добавляю слушатель события клик
         elem.addEventListener('click', ()=> {
             // беру атрибу этой кнопки
+
             let attr = +elem.getAttribute('id');
+            let newAttr = attr - 10;
+            console.log(newAttr)
             // беру локальное хранилище - массив с фильмами
             let stored = JSON.parse(localStorage.getItem('pushingMovie'));
             // фильтрую и сохраняю в локальное хранилище массив без фильма
             document.getElementById(attr).remove()
-            localStorage.setItem("pushingMovie", JSON.stringify(stored.filter(entry => entry.id !== attr)));
-            document.getElementById(attr).remove()
+            localStorage.setItem("pushingMovie", JSON.stringify(stored.filter(entry => entry.id !== newAttr)));
             // сломает страницу аккаунта - но почему - попробуй найти сам
 
             doThisManyTimes();
         });
     }
-};
+}
