@@ -18,14 +18,14 @@ const descText = document.createElement('p');
 const nextMovie = document.createElement('p');
 const background = document.createElement('img');
 const content = document.querySelector('.content');
+const descitemIn = document.createElement('p')
 
 function modalSwitcher () {
-    if(global.style.display = 'none') {
+    if(global.style.display ='none') {
         films.style.display = 'none';
         global.style.display = 'block';
     }
 };
-
      nextMovie.addEventListener('click', () => {
          const doStep = document.querySelector('.slider__next').getAttribute('step');
           newData.results.forEach((item, index)=>{
@@ -82,7 +82,7 @@ function createModal (data, index, adIndex) {
     cinemaPicture.classList.add('cinema__picture');
     cinemaTitle.classList.add('description__title');
     favoriteBtn.classList.add('description__favorite');
-    score.textContent = vote_average;
+    descitemIn.textContent = vote_average;
     releaseDate.textContent = release_date;
     descText.textContent = overview;
     cinemaTitle.textContent = title;
@@ -95,24 +95,23 @@ function createModal (data, index, adIndex) {
         cinemaPicture.setAttribute('src', './img/stranger.png');
         background.setAttribute('src', './img/stranger.png');
     }
+    score.append(descitemIn)
     about.prepend(cinema);
     modalWindow.append(background);
     descList.append(score, releaseDate);
     cinema.append(cinemaPicture);
-    description.append(descText);
+    description.append( descText);
     slider.append(nextMovie);
-    description.prepend(favoriteBtn);
+    description.prepend(favoriteBtn, cinemaTitle);
 };
 
  favoriteBtn.addEventListener('click', (e) => {
      const idFromAttribute = +favoriteBtn.getAttribute('movieId');
-
-
      if (localStorage.getItem('pushingMovie')) {
          if (JSON.parse(localStorage.getItem('pushingMovie')).find((elementMov) =>
              elementMov.id === idFromAttribute)) {
              favoriteBtn.style.display = 'none'
          }
      }
-             addToFav(idFromAttribute);
+     addToFav(idFromAttribute);
  });

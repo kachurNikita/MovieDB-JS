@@ -20,6 +20,7 @@
      })
  };
 
+
  function createPosters(someData) {
      const {poster_path, id, title} = someData;
      const image = document.createElement('img');

@@ -1,6 +1,7 @@
 .localstorage{
     display: none;
     padding: 100px 0 50px 0;
+    background-color: #F2F3F5;
 }
 
 .favoriteTitle {
@@ -23,15 +24,30 @@
 .desUn {
     text-align: center;
     width: 130px;
-    border: 1px solid #00ff7f;
     border-radius: 5px;
+    border: 3px solid #474D59;
     outline: none;
     background: inherit;
     font-family: inherit;
     font-weight: 900;
-    color: inherit;
+    color: #474D59;
     padding: 5px;
     display: block;
     margin-left: auto;
     margin-bottom: 30px;
+}
+
+.desUn:hover {
+    background-color:#474D59;
+    color: #ffffff;
+    border: 3px solid #ACAEAE;
+}
+
+.maFavorite {
+    margin-bottom: 20px;
+    color: #ACAEAE;
+}
+
+.description__textSec {
+    color: #474D59;
 }

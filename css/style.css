@@ -2,7 +2,6 @@
 @import url('modal.css');
 @import url('../localstorage/localstorage.css');
 
-
 * {
     padding: 0;
     margin: 0;
@@ -11,6 +10,7 @@
 
 body {
     font-family: "American Typewriter";
+    background-color: #F2F3F5;
 }
 
 ul {
@@ -19,7 +19,7 @@ ul {
 
 /** Header Section **/
 .header {
-    background-color: #778899;
+    background-color: #474D59;
     color: #fff;
     padding: 20px 0;
     font-size: 16px;
@@ -109,7 +109,8 @@ ul {
 }
 
 .pages__item:hover {
-  color: #00ff7f;
+  color: #56BBA0;
+    font-weight: 800;
 }
 
 
